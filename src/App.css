@@ -1,0 +1,122 @@
+/* top-level container/content */
+#root > .container {
+  margin-top: 2em;
+}
+
+:root {
+  --custom-green: #40aa54;
+  --custom-green-darker: #2c763a;
+  --custom-green-lighter: #79c387;
+  --custom-off-white: #eee;
+}
+
+.text-custom-green {
+  color: var(--custom-green);
+}
+
+/* link styling */
+
+a.text-custom-green {
+  color: var(--custom-green);
+}
+
+a.text-custom-green:hover {
+  color: var(--custom-green-darker);
+}
+
+a.text-custom-green:focus {
+  color: var(--custom-green-lighter);
+}
+
+/* table styling overrides */
+.table-hover > tbody > tr:hover td,
+.table-hover > tbody > tr:hover th {
+  background-color: var(--custom-green-lighter);
+}
+
+/* navbar brand background */
+.navbar {
+  padding-bottom: 0;
+  padding-top: 0;
+}
+
+.navbar > .container {
+  padding-top: .5rem;
+  padding-bottom: .5rem;
+  --angle: 135deg;
+  --brand-width: 100px;
+  background: linear-gradient(
+          var(--angle),
+          rgba(40,40,40,1) 0%,
+          rgba(40,40,40,1) var(--brand-width),
+          rgba(255,255,255,0) var(--brand-width)
+  );
+}
+
+/* some weird magic */
+.navbar > .container::before {
+  content: "";
+  height: 100%;
+  background-color: #282828;
+  position: absolute;
+  transform: translateX(-100%);
+  width: 500px;
+  z-index: 0;
+}
+
+.navbar-brand > .text-white {
+  color: var(--custom-off-white) !important;
+}
+
+.navbar-brand:hover {
+  filter: brightness(1.2);
+}
+
+/* form things */
+
+.btn:hover {
+  border: 1px solid var(--custom-green);
+  background-color: var(--custom-green);
+}
+
+.keywordInputIcon {
+  /* updated for easier resizing */
+  height: 80%;
+  transform: translateX(-10%) translateY(10%);
+  position: absolute;
+  right: 0;
+}
+
+.inputContainer {
+  position: relative;
+}
+
+/* @media */
+
+.hideAlert {
+  display: none;
+}
+
+@media screen and (max-width: 767px) {
+  .keywordInputIcon {
+    display: none;
+  }
+
+  /* navbar brand stuff */
+
+  .navbar > .container {
+    background: none;
+  }
+
+  .navbar-brand > .text-white {
+    color: #282828 !important;
+  }
+
+  .navbar-brand:hover {
+    filter: brightness(.8);
+  }
+
+  .navbar > .container::before {
+    background: none;
+  }
+}
